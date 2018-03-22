@@ -18,5 +18,8 @@
     "trie"
   ],
   "author": "Chaim Finkelman",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^5.0.4"
+  }
 }
