@@ -1,0 +1,22 @@
+{
+  "name": "jslife",
+  "version": "1.0.0",
+  "description": "Some stuff I think js should have.",
+  "main": "jslife.js",
+  "scripts": {
+    "test": "mocha --exit"
+  },
+  "keywords": [
+    "library",
+    "javascript",
+    "data",
+    "structures",
+    "do",
+    "heap",
+    "minheap",
+    "maxheap",
+    "trie"
+  ],
+  "author": "Chaim Finkelman",
+  "license": "MIT"
+}
