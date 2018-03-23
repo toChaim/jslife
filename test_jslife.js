@@ -80,6 +80,15 @@ describe('HEAP test', ()=>{
             assert.equal(heap.length, 4);
             assert.equal(heap.pop(), 4);
             assert.equal(heap.length, 3);
+            assert.equal(heap.pop(), 3);
+            assert.equal(heap.length, 2);
+            assert.equal(heap.pop(), 2);
+            assert.equal(heap.length, 1);
+            assert.equal(heap.pop(), 1);
+            assert.equal(heap.length, 0);
+            assert.equal(heap.pop(), undefined);
+            assert.equal(heap.length, 0);
         });
+        
     });
 });
