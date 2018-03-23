@@ -60,10 +60,12 @@ class HEAP{
         return ind;
     }
 
-    push(val){
-        this._heap.push(val);
-        this.length = this._heap.length;
-        this._swim(this.length-1);
+    push(...val){
+        for(let v of val){
+            this.length = this._heap.push(v);
+            this._swim(this.length-1);
+        }
+        
         return this.length;
     }
 
