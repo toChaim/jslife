@@ -19,10 +19,19 @@ const Do = (int, fn, ...args) => {
 // takes a comparator function
 class HEAP{
     constructor(comparator){
+        if(typeof comparator !== 'function' && comparator !== undefined){
+            throw new TypeError('The comparison function must be either a function or undefined', "jslife.js", 23); 
+        }
         this._heap = [];
         this.length = 0;
         this._comparator = comparator;
-        if(!comparator){ this._comparator = (a,b) => a-b; }
+        if(comparator === undefined){ 
+            this._comparator = (a,b) => {
+                if(a < b){ return 1; }
+                if(b < a){ return -1; }
+                return 0;
+            };
+        }
     }
 
     _getParent(int){
@@ -83,6 +92,9 @@ class HEAP{
         return val;
     }
 
+    peek(){
+        return this._heap[0];
+    }
 }
 
 module.exports = { Do, HEAP };

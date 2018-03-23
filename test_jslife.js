@@ -88,18 +88,30 @@ describe('HEAP test', ()=>{
             let heap = new HEAP();
             assert.equal(typeof heap.pop, 'function');
         });
-        it('can pop items', ()=>{
+        it('can pop ints', ()=>{
             let heap = new HEAP();
             heap.push(4,2,3,7,1);
-            assert.equal(heap.pop(), 7);
+            assert.equal(heap.pop(), 1);
             assert.equal(heap.length, 4);
-            assert.equal(heap.pop(), 4);
+            assert.equal(heap.pop(), 2);
             assert.equal(heap.length, 3);
             assert.equal(heap.pop(), 3);
             assert.equal(heap.length, 2);
-            assert.equal(heap.pop(), 2);
+            assert.equal(heap.pop(), 4);
             assert.equal(heap.length, 1);
-            assert.equal(heap.pop(), 1);
+            assert.equal(heap.pop(), 7);
+            assert.equal(heap.length, 0);
+        });
+        it('can pop strings', ()=>{
+            let heap = new HEAP();
+            heap.push("ba","aa","zz","ab",);
+            assert.equal(heap.pop(), "aa");
+            assert.equal(heap.length, 3);
+            assert.equal(heap.pop(), "ab");
+            assert.equal(heap.length, 2);
+            assert.equal(heap.pop(), "ba");
+            assert.equal(heap.length, 1);
+            assert.equal(heap.pop(), "zz");
             assert.equal(heap.length, 0);
         });
         it('pop returns undefined', ()=>{
@@ -110,6 +122,31 @@ describe('HEAP test', ()=>{
         it('peek should be a function',()=>{
             let heap = new HEAP();
             assert.equal(typeof heap.peek, 'function');
+        });
+        it('can peek', ()=>{
+            let heap = new HEAP();
+            heap.push("ba","aa","zz","ab",);
+            assert.equal(heap.peek(), "aa");
+            assert.equal(heap.length, 4);
+            assert.equal(heap.peek(), "aa");
+            assert.equal(heap.length, 4);
+            assert.equal(heap.pop(), "aa");
+            assert.equal(heap.length, 3);
+            assert.equal(heap.peek(), "ab");
+            assert.equal(heap.length, 3);
+        });
+        it('undefined comparator should be a function',()=>{
+            let heap = new HEAP();
+            assert.equal(typeof heap._comparator, 'function');
+        });
+        it('comparator should be a function',()=>{
+            let heap = new HEAP((a,b)=> a-b);
+            assert.equal(typeof heap._comparator, 'function');
+        });
+        it('object comparator should throw error', ()=>{
+            assert.throws(()=>{
+                let heap = new HEAP({test:7});
+            },TypeError);
         });
     });
 });
