@@ -143,10 +143,27 @@ describe('HEAP test', ()=>{
             let heap = new HEAP((a,b)=> a-b);
             assert.equal(typeof heap._comparator, 'function');
         });
-        it('object comparator should throw error', ()=>{
+        it('non function comparators should throw error', ()=>{
             assert.throws(()=>{
                 let heap = new HEAP({test:7});
             },TypeError);
+            assert.throws(()=>{
+                let heap = new HEAP(7);
+            },TypeError);
+        });
+        it('should work with custom comarators', ()=>{
+            let heap = new HEAP((a,b)=> a-b);
+            heap.push(4,2,3,7,1);
+            assert.equal(heap.pop(), 7);
+            assert.equal(heap.length, 4);
+            assert.equal(heap.pop(), 4);
+            assert.equal(heap.length, 3);
+            assert.equal(heap.pop(), 3);
+            assert.equal(heap.length, 2);
+            assert.equal(heap.pop(), 2);
+            assert.equal(heap.length, 1);
+            assert.equal(heap.pop(), 1);
+            assert.equal(heap.length, 0);
         });
     });
 });
