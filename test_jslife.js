@@ -57,7 +57,7 @@ describe('Do tests', ()=>{
 });
 
 describe('HEAP test', ()=>{
-    describe('HEAP should be a class',()=>{
+    describe('should be a class',()=>{
         it('should be a function', ()=>{
             assert.equal(typeof HEAP,'function');
          });
@@ -65,16 +65,28 @@ describe('HEAP test', ()=>{
             assert.equal(HEAP.toString().substring(0,6), 'class ');
          });
     });
-    describe('HEAP happy behavior', ()=>{
+    describe('should return correct values', ()=>{
         it('can creat new heap', ()=>{
             let heap = new HEAP();
             assert.equal(heap instanceof HEAP, true);
+        });
+        it('heap should have a length that returns an int',()=>{
+            let heap = new HEAP();
             assert.equal(heap.length,0);
+            assert.equal(Number.isInteger(heap.length), true);
+        });
+        it('push should be a function',()=>{
+            let heap = new HEAP();
+            assert.equal(typeof heap.push, 'function');
         });
         it('can push items', ()=>{
             let heap = new HEAP();
             assert.equal(heap.push(4), 1);
             assert.equal(heap.push(2,3,7,1), 5);
+        });
+        it('pop should be a function',()=>{
+            let heap = new HEAP();
+            assert.equal(typeof heap.pop, 'function');
         });
         it('can pop items', ()=>{
             let heap = new HEAP();
@@ -94,6 +106,10 @@ describe('HEAP test', ()=>{
             let heap = new HEAP();
             assert.equal(heap.pop(), undefined);
             assert.equal(heap.length, 0);
+        });
+        it('peek should be a function',()=>{
+            let heap = new HEAP();
+            assert.equal(typeof heap.peek, 'function');
         });
     });
 });
