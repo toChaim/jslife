@@ -71,7 +71,13 @@ class HEAP{
 
     pop(){
         var val = this._heap[0];
-        this._heap[0] = this._heap.pop();
+        if(this.length === 0){ return undefined; }
+        if(this.length === 1){
+            this._heap.pop();
+        }
+        else{
+            this._heap[0] = this._heap.pop();
+        }
         this.length = this._heap.length;
         this._sink(0);
         return val;
