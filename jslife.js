@@ -2,7 +2,7 @@
 // takes int (an integer of how many times you want to do things)
 // and fn ( a function to do each time)
 // optional args arguments for the fn
-const DO = (int, fn, ...args) => {
+const Do = (int, fn, ...args) => {
     if(!Number.isInteger(Number(int)) 
         || typeof fn !== 'function'
         || int <= 0
@@ -17,7 +17,7 @@ const DO = (int, fn, ...args) => {
 
 // Heap class makes a min/max/prioriety heap
 // takes a comparator function
-class Heap{
+class HEAP{
     constructor(comparator){
         this._heap = [];
         this.length = 0;
@@ -37,6 +37,43 @@ class Heap{
         }
     }
 
+    _swim(ind){
+        var parent = this._getParent(ind);
+        while(this._comparator(this._heap[ind],this._heap[parent]) > 0){
+            [this._heap[ind],this._heap[parent]]=[this._heap[parent],this._heap[ind]];
+            ind = parent;
+            parent = this._getParent(ind);
+        }
+
+        return ind;
+    }
+
+    _sink(ind){
+        var child = this._getCorrectChild(ind);
+        while(this._comparator(this._heap[ind],this._heap[child]) > 0){
+            [this._heap[ind],this._heap[child]]=[this._heap[child],this._heap[ind]];
+            ind = child;
+            child = this._getCorrectChild(ind);
+        }
+
+        return ind;
+    }
+
+    push(val){
+        this._heap.push(val);
+        this.length = this._heap.length;
+        this._swim(this.length-1);
+        return this.length;
+    }
+
+    pop(){
+        var val = this._heap[0];
+        this._heap[0] = this._heap.pop();
+        this.length = this._heap.length;
+        this._sink(0);
+        return val;
+    }
+
 }
 
-module.exports = { DO };
+module.exports = { Do, HEAP };
