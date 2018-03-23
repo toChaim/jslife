@@ -66,16 +66,19 @@ describe('HEAP test', ()=>{
          });
     });
     describe('HEAP happy behavior', ()=>{
-        let heap = new HEAP();
         it('can creat new heap', ()=>{
+            let heap = new HEAP();
             assert.equal(heap instanceof HEAP, true);
             assert.equal(heap.length,0);
         });
         it('can push items', ()=>{
+            let heap = new HEAP();
             assert.equal(heap.push(4), 1);
             assert.equal(heap.push(2,3,7,1), 5);
         });
         it('can pop items', ()=>{
+            let heap = new HEAP();
+            heap.push(4,2,3,7,1);
             assert.equal(heap.pop(), 7);
             assert.equal(heap.length, 4);
             assert.equal(heap.pop(), 4);
@@ -86,9 +89,11 @@ describe('HEAP test', ()=>{
             assert.equal(heap.length, 1);
             assert.equal(heap.pop(), 1);
             assert.equal(heap.length, 0);
+        });
+        it('pop returns undefined', ()=>{
+            let heap = new HEAP();
             assert.equal(heap.pop(), undefined);
             assert.equal(heap.length, 0);
         });
-        
     });
 });
