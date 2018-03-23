@@ -55,3 +55,9 @@ describe('DO tests', ()=>{
         });
     });
 });
+
+describe('Heap test', ()=>{
+    it('should be a function', ()=>{
+        assert.equal(typeof Heap,'function'); 
+     });
+});
