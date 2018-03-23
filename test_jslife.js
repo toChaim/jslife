@@ -71,9 +71,15 @@ describe('HEAP test', ()=>{
             assert.equal(heap instanceof HEAP, true);
             assert.equal(heap.length,0);
         });
-        it('can get new item', ()=>{
+        it('can push items', ()=>{
             assert.equal(heap.push(4), 1);
             assert.equal(heap.push(2,3,7,1), 5);
+        });
+        it('can pop items', ()=>{
+            assert.equal(heap.pop(), 7);
+            assert.equal(heap.length, 4);
+            assert.equal(heap.pop(), 4);
+            assert.equal(heap.length, 3);
         });
     });
 });

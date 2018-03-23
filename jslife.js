@@ -30,7 +30,7 @@ class HEAP{
     }
 
     _getCorrectChild(int){
-        if(this._comparator(this._heap[int*2+1],this._heap[int*2+2]) > 0){
+        if(this._comparator(this._heap[int*2+1],this._heap[int*2+2]) < 0){
             return int*2+2;
         }
         else{
@@ -51,7 +51,7 @@ class HEAP{
 
     _sink(ind){
         var child = this._getCorrectChild(ind);
-        while(this._comparator(this._heap[ind],this._heap[child]) > 0){
+        while(this._comparator(this._heap[ind],this._heap[child]) < 0){
             [this._heap[ind],this._heap[child]]=[this._heap[child],this._heap[ind]];
             ind = child;
             child = this._getCorrectChild(ind);
