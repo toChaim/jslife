@@ -65,5 +65,15 @@ describe('HEAP test', ()=>{
             assert.equal(HEAP.toString().substring(0,6), 'class ');
          });
     });
-    
+    describe('HEAP happy behavior', ()=>{
+        let heap = new HEAP();
+        it('can creat new heap', ()=>{
+            assert.equal(heap instanceof HEAP, true);
+            assert.equal(heap.length,0);
+        });
+        it('can get new item', ()=>{
+            assert.equal(heap.push(4), 1);
+            assert.equal(heap.push(2,3,7,1), 5);
+        });
+    });
 });

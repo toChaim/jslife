@@ -22,6 +22,7 @@ class HEAP{
         this._heap = [];
         this.length = 0;
         this._comparator = comparator;
+        if(!comparator){ this._comparator = (a,b) => a-b; }
     }
 
     _getParent(int){
