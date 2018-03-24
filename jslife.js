@@ -24,13 +24,18 @@ class HEAP{
         }
         this._heap = [];
         this.length = 0;
-        this._comparator = comparator;
         if(comparator === undefined){ 
-            this._comparator = (a,b) => {
+            comparator = (a,b) => {
                 if(a < b){ return -1; }
                 if(b < a){ return 1; }
                 return 0;
             };
+        }
+        this._comparator = (a,b) => {
+            if(a === undefined || b === undefined){
+                return 0;
+            }
+            return comparator(a,b);
         }
     }
 

@@ -1,5 +1,5 @@
 const { HEAP } = require('./jslife');
-const assert = require('assert');
+const {assert, expect} = require('chai');
 
 describe('HEAP test', ()=>{
     describe('should be a class',()=>{
@@ -108,6 +108,22 @@ describe('HEAP test', ()=>{
             assert.equal(heap.pop(), 2);
             assert.equal(heap.length, 1);
             assert.equal(heap.pop(), 1);
+            assert.equal(heap.length, 0);
+        });
+        it('should work on objects', ()=>{
+            let heap = new HEAP((a,b) => b.x - a.x );
+            heap.push({x: 6},{x: 1},{x: 2},{x: 4},{x: 3},{x: 5});
+            expect(heap.pop()).to.deep.equal({x:6});
+            assert.equal(heap.length, 5);
+            expect(heap.pop()).to.deep.equal({x:5});
+            assert.equal(heap.length, 4);
+            expect(heap.pop()).to.deep.equal({x:4});
+            assert.equal(heap.length, 3);
+            expect(heap.pop()).to.deep.equal({x:3});
+            assert.equal(heap.length, 2);
+            expect(heap.pop()).to.deep.equal({x:2});
+            assert.equal(heap.length, 1);
+            expect(heap.pop()).to.deep.equal({x:1});
             assert.equal(heap.length, 0);
         });
     });
