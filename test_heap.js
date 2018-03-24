@@ -97,7 +97,7 @@ describe('HEAP test', ()=>{
             },TypeError);
         });
         it('should work with custom comarators', ()=>{
-            let heap = new HEAP((a,b)=> a-b);
+            let heap = new HEAP((a,b)=> b-a);
             heap.push(4,2,3,7,1);
             assert.equal(heap.pop(), 7);
             assert.equal(heap.length, 4);
