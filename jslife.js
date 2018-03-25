@@ -111,10 +111,16 @@ class Node{
 }
 
 class TRIE{
-    // takes function input key output next node
-    // must output undefined for end of sequence
-    constructor(extractor){
-        this._extract = extractor;
+    // takes function that takes a value or object and integer 
+    // it should return a string that will be the key for the next node.
+    // it must output undefined for end of sequence
+    constructor(stringAt){
+        if(stringAt === undefined){ stringAt = (val, int)=> val[int];}
+        if(typeof stringAt !== 'function'){ 
+            throw new TypeError('The stringAt function must be either a function or undefined', "jslife.js", 120);
+        }
+        this._stringAt = stringAt;
+        this._root = null;
     }
 }
 

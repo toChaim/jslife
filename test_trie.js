@@ -23,16 +23,13 @@ describe('TRIE test', ()=>{
             }, TypeError);
         });
         it('a string',()=>{
-            let heap = new TRIE('ninety nine');
+            assert.throws(()=>{
+                let heap = new TRIE('ninety nine');
+            },TypeError);
         });
         it('null',()=>{
             assert.throws(()=>{
                 let heap = new TRIE(null);
-            }, TypeError);
-        });
-        it('undefined',()=>{
-            assert.throws(()=>{
-                let heap = new TRIE(undefined);
             }, TypeError);
         });
     });
