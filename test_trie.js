@@ -34,14 +34,14 @@ describe('Trie test', ()=>{
         });
     });
 
-    describe('push methode', ()=>{
+    describe('add methode', ()=>{
         it('should be a function', ()=>{
             let trie = new Trie();
-            assert.equal(typeof trie._stringAt,'function');
+            assert.equal(typeof trie.add,'function');
         });
         it('should get corect results', ()=>{
             let trie = new Trie();
-            assert.equal( trie.push("string"), 1);
+            assert.equal( trie.add("string"), 1);
             console.log(trie);
         });
     });

@@ -124,7 +124,7 @@ class Trie{
         this.length = 0;
     }
 
-    push(val){
+    add(val){
         var node = this._root;
         var index = 0;
         
