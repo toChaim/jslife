@@ -39,10 +39,24 @@ describe('Trie test', ()=>{
             let trie = new Trie();
             assert.equal(typeof trie.add,'function');
         });
-        it('should get corect results', ()=>{
+        it('should add single words', ()=>{
             let trie = new Trie();
             assert.equal( trie.add("string"), 1);
-            assert.equal( trie.add('new','word','are','added'), 5);
+            assert.equal( trie.add("more"), 2);
+            assert.equal( trie.add("and"), 3);
+        });
+        it('should not add same word twice', ()=>{
+            let trie = new Trie();
+            assert.equal( trie.add("one"), 1);
+            assert.equal( trie.add("one"), 1);
+            assert.equal( trie.add("two"), 2);
+            assert.equal( trie.add("two"), 2);
+            assert.equal( trie.add("one"), 2);
+            assert.equal( trie.add('three'), 3);
+        });
+        it('should add multiple words', ()=>{
+            let trie = new Trie();
+            assert.equal( trie.add('new','word','are','added','now','are'), 5);
         });
     });
 });
