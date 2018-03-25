@@ -124,22 +124,26 @@ class Trie{
         this.length = 0;
     }
 
-    add(val){
-        var node = this._root;
-        var index = 0;
-        
-        // add sequence
-        while(this._stringAt(val,index + 1) !== undefined){
-            if( node.next[this._stringAt(val,index)] === undefined ){
-                node.next[this._stringAt(val,index)] = new TrieNode(null,node);
+    add(...vals){
+        for(let val of vals){
+            var node = this._root;
+            var index = 0;
+            
+            // add sequence
+            while(this._stringAt(val,index + 1) !== undefined){
+                if( node.next[this._stringAt(val,index)] === undefined ){
+                    node.next[this._stringAt(val,index)] = new TrieNode(null,node);
+                }
+                node = node.next[this._stringAt(val,index)];
+                index++;
             }
-            node = node.next[this._stringAt(val,index)];
-            index++;
-        }
-        // add terminal node
-        node.value = val;
+            // add terminal node
+            node.value = val;
 
-        return ++this.length;
+            this.length++;
+        }
+
+        return this.length;
     }
 }
 
