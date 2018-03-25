@@ -123,6 +123,24 @@ class Trie{
         this._root = new TrieNode(null,null);
         this.length = 0;
     }
+
+    push(val){
+        var node = this._root;
+        var index = 0;
+        
+        // add sequence
+        while(this.stringAt(index + 1) !== undefined){
+            if( node.next[this.stringAt(index)] === undefined ){
+                node.next[this.stringAt(index)] = new TrieNode(null,node);
+            }
+            node = node.next[this.stringAt(index)];
+            index++;
+        }
+        // add terminal node
+        node.value = val;
+
+        return ++this.length;
+    }
 }
 
 module.exports = { Do, Heap, Trie };
