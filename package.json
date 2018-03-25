@@ -4,7 +4,8 @@
   "description": "Some stuff I think js should have.",
   "main": "jslife.js",
   "scripts": {
-    "test": "mocha test_* --exit"
+    "test": "mocha test_* --exit",
+    "cover": "nyc mocha test_* --exit"
   },
   "keywords": [
     "library",
@@ -21,6 +22,7 @@
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.1.2",
-    "mocha": "^5.0.4"
+    "mocha": "^5.0.4",
+    "nyc": "^11.6.0"
   }
 }
