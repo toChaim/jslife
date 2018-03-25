@@ -17,7 +17,7 @@ const Do = (int, fn, ...args) => {
 
 // Heap class makes a min/max/prioriety heap
 // takes a comparator function
-class HEAP{
+class Heap{
     constructor(comparator){
         if(typeof comparator !== 'function' && comparator !== undefined){
             throw new TypeError('The comparison function must be either a function or undefined', "jslife.js", 23); 
@@ -102,20 +102,49 @@ class HEAP{
     }
 }
 
-class Node{
-    constructor(val, parent = null){
+class TrieNode{
+    constructor(val = undefined, parent = null){
         this.parent = parent;
         this.next = {};
         this.value = val;
     }
 }
 
-class TRIE{
-    // takes function input key output next node
-    // must output undefined for end of sequence
-    constructor(extractor){
-        this._extract = extractor;
+class Trie{
+    // takes function that takes a value or object and integer 
+    // it should return a string that will be the key for the next node.
+    // it must output undefined for end of sequence
+    constructor(stringAt){
+        if(stringAt === undefined){ stringAt = (val, int)=> val[int];}
+        if(typeof stringAt !== 'function'){ 
+            throw new TypeError('The stringAt function must be either a function or undefined', "jslife.js", 120);
+        }
+        this._stringAt = stringAt;
+        this._root = new TrieNode(undefined);
+        this.length = 0;
+    }
+
+    add(...vals){
+        for(let val of vals){
+            var node = this._root;
+            var index = 0;
+            
+            // add sequence
+            while(this._stringAt(val,index + 1) !== undefined){
+                if( node.next[this._stringAt(val,index)] === undefined ){
+                    node.next[this._stringAt(val,index)] = new TrieNode(undefined,node);
+                }
+                node = node.next[this._stringAt(val,index)];
+                index++;
+            }
+            // add terminal node
+            if(node.value === undefined){ this.length++; }
+            node.value = val;
+
+        }
+
+        return this.length;
     }
 }
 
-module.exports = { Do, HEAP, TRIE };
+module.exports = { Do, Heap, Trie };
