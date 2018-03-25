@@ -17,7 +17,7 @@ const Do = (int, fn, ...args) => {
 
 // Heap class makes a min/max/prioriety heap
 // takes a comparator function
-class HEAP{
+class Heap{
     constructor(comparator){
         if(typeof comparator !== 'function' && comparator !== undefined){
             throw new TypeError('The comparison function must be either a function or undefined', "jslife.js", 23); 
@@ -102,7 +102,7 @@ class HEAP{
     }
 }
 
-class Node{
+class TrieNode{
     constructor(val, parent = null){
         this.parent = parent;
         this.next = {};
@@ -110,7 +110,7 @@ class Node{
     }
 }
 
-class TRIE{
+class Trie{
     // takes function that takes a value or object and integer 
     // it should return a string that will be the key for the next node.
     // it must output undefined for end of sequence
@@ -120,8 +120,9 @@ class TRIE{
             throw new TypeError('The stringAt function must be either a function or undefined', "jslife.js", 120);
         }
         this._stringAt = stringAt;
-        this._root = null;
+        this._root = new TrieNode(null,null);
+        this.length = 0;
     }
 }
 
-module.exports = { Do, HEAP, TRIE };
+module.exports = { Do, Heap, Trie };
