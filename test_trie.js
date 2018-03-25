@@ -42,7 +42,7 @@ describe('Trie test', ()=>{
         it('should get corect results', ()=>{
             let trie = new Trie();
             assert.equal( trie.add("string"), 1);
-            console.log(trie);
+            assert.equal( trie.add('new','word','are','added'), 5);
         });
     });
 });
