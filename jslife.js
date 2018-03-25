@@ -129,11 +129,11 @@ class Trie{
         var index = 0;
         
         // add sequence
-        while(this._stringAt(index + 1) !== undefined){
-            if( node.next[this._stringAt(index)] === undefined ){
-                node.next[this._stringAt(index)] = new TrieNode(null,node);
+        while(this._stringAt(val,index + 1) !== undefined){
+            if( node.next[this._stringAt(val,index)] === undefined ){
+                node.next[this._stringAt(val,index)] = new TrieNode(null,node);
             }
-            node = node.next[this._stringAt(index)];
+            node = node.next[this._stringAt(val,index)];
             index++;
         }
         // add terminal node
