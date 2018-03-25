@@ -1,35 +1,35 @@
-const { TRIE } = require('./jslife');
+const { Trie } = require('./jslife');
 const assert = require('assert');
 
-describe('TRIE test', ()=>{
+describe('Trie test', ()=>{
     describe('should be a class',()=>{
         it('should be a function', ()=>{
-            assert.equal(typeof TRIE,'function');
+            assert.equal(typeof Trie,'function');
          });
          it('toString should start with "class "', ()=> {
-            assert.equal(TRIE.toString().substring(0,6), 'class ');
+            assert.equal(Trie.toString().substring(0,6), 'class ');
          });
     });
 
     describe('should throw error with wrong input', ()=>{
         it('object',()=>{
             assert.throws(()=>{
-                let heap = new TRIE({x:99});
+                let heap = new Trie({x:99});
             }, TypeError);
         });
         it('an int',()=>{
             assert.throws(()=>{
-                let heap = new TRIE(99);
+                let heap = new Trie(99);
             }, TypeError);
         });
         it('a string',()=>{
             assert.throws(()=>{
-                let heap = new TRIE('ninety nine');
+                let heap = new Trie('ninety nine');
             },TypeError);
         });
         it('null',()=>{
             assert.throws(()=>{
-                let heap = new TRIE(null);
+                let heap = new Trie(null);
             }, TypeError);
         });
     });
