@@ -1,4 +1,4 @@
-const { Trie } = require('./jslife');
+const { Trie } = require('../jslife');
 const assert = require('assert');
 
 describe('Trie test', ()=>{

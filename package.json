@@ -4,8 +4,8 @@
   "description": "Some stuff I think js should have.",
   "main": "jslife.js",
   "scripts": {
-    "test": "mocha test_* --exit",
-    "cover": "nyc mocha test_* --exit"
+    "test": "mocha test/test_* --exit",
+    "cover": "nyc mocha test/test_* --exit"
   },
   "keywords": [
     "library",

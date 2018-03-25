@@ -1,4 +1,4 @@
-const { Do } = require('./jslife');
+const { Do } = require('../jslife');
 const assert = require('assert');
 
 describe('Do tests', ()=>{

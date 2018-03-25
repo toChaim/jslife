@@ -1,4 +1,4 @@
-const { Heap } = require('./jslife');
+const { Heap } = require('../jslife');
 const {assert, expect} = require('chai');
 
 describe('Heap test', ()=>{
