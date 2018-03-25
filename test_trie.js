@@ -33,4 +33,16 @@ describe('Trie test', ()=>{
             }, TypeError);
         });
     });
+
+    describe('push methode', ()=>{
+        it('should be a function', ()=>{
+            let trie = new Trie();
+            assert.equal(typeof trie._stringAt,'function');
+        });
+        it('should get corect results', ()=>{
+            let trie = new Trie();
+            assert.equal( trie.push("string"), 1);
+            console.log(trie);
+        });
+    });
 });
