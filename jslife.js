@@ -2,7 +2,7 @@
 // takes int (an integer of how many times you want to do things)
 // and fn ( a function to do each time)
 // optional args arguments for the fn
-const Do = (int, fn, ...args) => {
+const repeat = (int, fn, ...args) => {
     if(!Number.isInteger(Number(int)) 
         || typeof fn !== 'function'
         || int <= 0
@@ -147,4 +147,4 @@ class Trie{
     }
 }
 
-module.exports = { Do, Heap, Trie };
+module.exports = { repeat, Heap, Trie };
