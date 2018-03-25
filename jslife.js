@@ -1,8 +1,8 @@
-// DO is an arrow Function to do things repatedly do things.
+// repeat is an arrow Function to repatedly do things.
 // takes int (an integer of how many times you want to do things)
 // and fn ( a function to do each time)
 // optional args arguments for the fn
-const Do = (int, fn, ...args) => {
+const repeat = (int, fn, ...args) => {
     if(!Number.isInteger(Number(int)) 
         || typeof fn !== 'function'
         || int <= 0
@@ -13,6 +13,24 @@ const Do = (int, fn, ...args) => {
         fn(...args);
     }
     return true;
+}
+
+// deepEquals is a function that test if two things are the same
+const deepEquals = (a,b) => {
+    if(typeof a !== typeof b){ return false; }
+    if(typeof a === 'object'){
+        if(a.constructor !== b.constructor){ return false; }
+        let keysOfA = Object.keys(a);
+        if(keysOfA.length !== Object.keys(b).length){ return false; }
+        for(let key of keysOfA){
+            if( deepEquals(a[key],b[key]) === false){ return false; }
+        }
+        return true;
+    }
+    // deal with functions
+
+    // all others
+    return a === b;
 }
 
 // Heap class makes a min/max/prioriety heap
@@ -147,4 +165,4 @@ class Trie{
     }
 }
 
-module.exports = { Do, Heap, Trie };
+module.exports = { repeat, deepEquals, Heap, Trie };

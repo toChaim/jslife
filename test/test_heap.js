@@ -49,7 +49,9 @@ describe('Heap test', ()=>{
         });
         it('can pop strings', ()=>{
             let heap = new Heap();
-            heap.push("ba","aa","zz","ab",);
+            heap.push("ba","aa","zz","ab","aa");
+            assert.equal(heap.pop(), "aa");
+            assert.equal(heap.length, 4);
             assert.equal(heap.pop(), "aa");
             assert.equal(heap.length, 3);
             assert.equal(heap.pop(), "ab");
@@ -70,7 +72,7 @@ describe('Heap test', ()=>{
         });
         it('can peek', ()=>{
             let heap = new Heap();
-            heap.push("ba","aa","zz","ab",);
+            heap.push("ba","aa","zz","ab");
             assert.equal(heap.peek(), "aa");
             assert.equal(heap.length, 4);
             assert.equal(heap.peek(), "aa");
@@ -126,5 +128,21 @@ describe('Heap test', ()=>{
             expect(heap.pop()).to.deep.equal({x:1});
             assert.equal(heap.length, 0);
         });
+    });
+});
+
+describe('test internal functions', ()=>{
+    let heap = new Heap();
+    it('_comparator should be a function', ()=>{
+        assert.equal(typeof heap._comparator,'function');
+    });
+    it('_comparator should return correct values', ()=>{
+        assert.equal(heap._comparator(-3, undefined),0);
+        assert.equal(heap._comparator(undefined, -3),0);
+        assert.equal(heap._comparator(3, undefined),0);
+        assert.equal(heap._comparator(undefined, 3),0);
+        assert.equal(heap._comparator(3, 3),0);
+        assert.equal(heap._comparator(4, 3),1);
+        assert.equal(heap._comparator(2, 3),-1);
     });
 });
