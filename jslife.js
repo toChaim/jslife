@@ -138,9 +138,9 @@ class Trie{
                 index++;
             }
             // add terminal node
+            if(node.value !== val){ this.length++; }
             node.value = val;
 
-            this.length++;
         }
 
         return this.length;
