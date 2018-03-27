@@ -8,3 +8,5 @@ If no comparator is given it sorts stings or integers.
 ## Functions
 ### repeat
 ### deepEquals
+### memoize
+Takes a function and memoizes it.
