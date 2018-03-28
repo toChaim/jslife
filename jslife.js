@@ -33,6 +33,17 @@ const deepEquals = (a,b) => {
     return a === b;
 }
 
+// memoize function that takes a function and memoizes it.
+const memoize = (fn)=>{
+    var memo = {};
+
+    return (...args)=>{
+        let key = args.map(v => JSON.stringify(v)).join('#');
+        memo[key] = memo[key] || fn(...args);
+        return memo[key];
+    }
+} 
+
 // Heap class makes a min/max/prioriety heap
 // takes a comparator function
 class Heap{
@@ -165,4 +176,4 @@ class Trie{
     }
 }
 
-module.exports = { times, deepEquals, Heap, Trie };
+module.exports = { times, deepEquals, memoize, Heap, Trie };
