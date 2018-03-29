@@ -2,7 +2,7 @@
 // takes int (an integer of how many times you want to do things)
 // and fn ( a function to do each time)
 // optional args arguments for the fn
-const repeat = (int, fn, ...args) => {
+const times = (int, fn, ...args) => {
     if(!Number.isInteger(Number(int)) 
         || typeof fn !== 'function'
         || int <= 0
@@ -32,6 +32,17 @@ const deepEquals = (a,b) => {
     // all others
     return a === b;
 }
+
+// memoize function that takes a function and memoizes it.
+const memoize = (fn)=>{
+    var memo = {};
+
+    return (...args)=>{
+        let key = args.map(v => JSON.stringify(v)).join('#');
+        memo[key] = memo[key] || fn(...args);
+        return memo[key];
+    }
+} 
 
 // Heap class makes a min/max/prioriety heap
 // takes a comparator function
@@ -165,4 +176,4 @@ class Trie{
     }
 }
 
-module.exports = { repeat, deepEquals, Heap, Trie };
+module.exports = { times, deepEquals, memoize, Heap, Trie };
