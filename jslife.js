@@ -33,7 +33,8 @@ const deepEquals = (a,b) => {
     return a === b;
 }
 
-// memoize function that takes a function and memoizes it.
+// takes a function and memoizes it.
+// warning does not work on higher order functions.
 const memoize = (fn)=>{
     var memo = {};
 
@@ -42,7 +43,15 @@ const memoize = (fn)=>{
         memo[key] = memo[key] || fn(...args);
         return memo[key];
     }
-} 
+}
+
+// takes a funcition and its arguments as arguments
+// returns the number of milliseconds it takes to run
+const runTimer = (fn, ...args)=>{
+    let beforeTime = Date.now();
+    fn(...args);
+    return Date.now() - beforeTime;
+}
 
 // Heap class makes a min/max/prioriety heap
 // takes a comparator function
@@ -176,4 +185,4 @@ class Trie{
     }
 }
 
-module.exports = { times, deepEquals, memoize, Heap, Trie };
+module.exports = { times, deepEquals, memoize, runTimer, Heap, Trie };
