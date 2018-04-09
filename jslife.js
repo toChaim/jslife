@@ -33,8 +33,16 @@ const deepEquals = (a,b) => {
     return a === b;
 }
 
-// memoize function that takes a function and memoizes it.
-const memoize = (fn)=>{
+// takes a function and caches it.
+/* to memoize a recursive function call cache on the function definition 
+    let fib = cache((n) => {
+        console.log('fib called: ', ++fib.cnt);
+        if( n < 1 ){ return NaN; }
+        if( n < 3 ){ return 1; }
+        return fib(n-2) + fib(n-1);
+    });
+*/
+const cache = (fn)=>{
     var memo = {};
 
     return (...args)=>{
@@ -42,7 +50,15 @@ const memoize = (fn)=>{
         memo[key] = memo[key] || fn(...args);
         return memo[key];
     }
-} 
+}
+
+// takes a funcition and its arguments as arguments
+// returns the number of milliseconds it takes to run
+const runTimer = (fn, ...args)=>{
+    let beforeTime = Date.now();
+    fn(...args);
+    return Date.now() - beforeTime;
+}
 
 // Heap class makes a min/max/prioriety heap
 // takes a comparator function
@@ -176,4 +192,4 @@ class Trie{
     }
 }
 
-module.exports = { times, deepEquals, memoize, Heap, Trie };
+module.exports = { times, deepEquals, cache, runTimer, Heap, Trie };
