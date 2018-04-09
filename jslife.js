@@ -33,9 +33,16 @@ const deepEquals = (a,b) => {
     return a === b;
 }
 
-// takes a function and memoizes it.
-// warning does not work on higher order functions.
-const memoize = (fn)=>{
+// takes a function and caches it.
+/* to memoize a recursive function call cache on the function definition 
+    let fib = cache((n) => {
+        console.log('fib called: ', ++fib.cnt);
+        if( n < 1 ){ return NaN; }
+        if( n < 3 ){ return 1; }
+        return fib(n-2) + fib(n-1);
+    });
+*/
+const cache = (fn)=>{
     var memo = {};
 
     return (...args)=>{
@@ -185,4 +192,4 @@ class Trie{
     }
 }
 
-module.exports = { times, deepEquals, memoize, runTimer, Heap, Trie };
+module.exports = { times, deepEquals, cache, runTimer, Heap, Trie };
