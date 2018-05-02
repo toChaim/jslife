@@ -1,8 +1,10 @@
-// repeat is an arrow Function to repatedly do things.
+// times is an arrow Function to repatedly do things.
 // takes int (an integer of how many times you want to do things)
-// and fn ( a function to do each time)
-// optional args arguments for the fn
-const times = (int, fn, ...args) => {
+// the int must be posotive
+// and takes a function to do each time
+// the function is passed the rep number as an argument
+// returns true if it ran and false if it did not
+const times = (int, fn) => {
     if(!Number.isInteger(Number(int)) 
         || typeof fn !== 'function'
         || int <= 0
@@ -10,7 +12,7 @@ const times = (int, fn, ...args) => {
         return false;
     }
     for(let rep = 0; rep < int; rep++){
-        fn(...args);
+        fn(rep);
     }
     return true;
 }
