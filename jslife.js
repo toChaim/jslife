@@ -2,7 +2,7 @@
 // takes int (an integer of how many times you want to do things)
 // the int must be posotive
 // and takes a function to do each time
-// the function is passed the rep number as an argument
+// the function is passed the count (starting from 0) as an argument
 // returns true if it ran and false if it did not
 const times = (int, fn) => {
     if(!Number.isInteger(Number(int)) 
