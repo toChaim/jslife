@@ -27,4 +27,7 @@ Times returns true if it ran and false if it did not.
 ### deepEquals
 ### cache
 Takes a function and caches it's results.  
-If you do this when the function is created you can make a memoized function.  
+If you do this when the function is created you can make a memoized function.
+# Running tests
+in terminal type "npm i"
+then type "npm test"
